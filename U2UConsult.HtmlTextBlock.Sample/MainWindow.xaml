@@ -1,0 +1,152 @@
+﻿<Window 
+    x:Class="U2UConsult.HtmlTextBlock.Sample.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:uc="clr-namespace:Microsoft.Windows.Controls;assembly=U2UConsult.RichHtmlTextBlock"
+        
+    Title="U2U Consult HTML TextBlock Sample" 
+    Foreground="WhiteSmoke" Background="SlateGray"
+    Width="600"
+    SizeToContent="Height" 
+    Icon="/U2UConsult.HtmlTextBlock.Sample;component/Assets/Images/dotbay.png">
+    <Window.Resources>
+        <uc:HtmlFormatter x:Key="HtmlFormatter" />
+        <LinearGradientBrush
+            x:Key="LavenderWhiteBrush"
+            EndPoint="0.5,1" StartPoint="0.5,0">
+            <GradientStop Color="Lavender" Offset="0" />
+            <GradientStop Color="White" Offset="1" />
+        </LinearGradientBrush>
+        <Style
+            x:Key="HtmlTextBlockStyle"
+            TargetType="uc:RichTextBox"
+            >
+            <Setter Property="Height" Value="84" />
+            <Setter Property="Margin" Value="6" />
+            <Setter Property="Padding" Value="6" />
+            <Setter Property="Background" Value="{StaticResource LavenderWhiteBrush}" />
+        </Style>
+    </Window.Resources>
+    <Grid
+        Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <TextBlock
+            Text="Text Formatting"
+            FontWeight="Bold"
+            Margin="6 6 6 0"
+            Grid.Row="0" Grid.Column="0" />
+        <uc:RichTextBox
+            x:Name="HtmlFormattingRichTextBox"
+            Style="{StaticResource HtmlTextBlockStyle}"
+            Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" >
+        </uc:RichTextBox>
+        <TextBlock
+            Text="Tables"
+            FontWeight="Bold"
+            Margin="6 6 6 0"
+            Grid.Row="2" Grid.Column="0" />
+        <uc:RichTextBox
+            x:Name="HtmlTableRichTextBox"
+            Style="{StaticResource HtmlTextBlockStyle}"
+            TextFormatter="{StaticResource HtmlFormatter}"
+            Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" >
+        </uc:RichTextBox>
+        <TextBlock
+            Text="Binding"
+            FontWeight="Bold"
+            Margin="6 6 6 0"
+            Grid.Row="4" Grid.Column="0" />
+        <uc:RichTextBox
+            x:Name="BoundHtmlRichTextBox"
+            Style="{StaticResource HtmlTextBlockStyle}"
+            TextFormatter="{StaticResource HtmlFormatter}"
+            Text="{Binding Message}"
+            Grid.Row="5" Grid.ColumnSpan="2" >
+        </uc:RichTextBox>
+        <StackPanel
+            Orientation="Horizontal"
+            Margin="0 0 0 6"
+            Grid.Row="6">
+            <Button
+                Click="Button_Click" 
+                Content="NL"
+                Height="24" Width="72"
+                Margin="6 0"/>
+            <Button
+                Click="Button_Click_1" 
+                Content="FR"
+                Height="24" Width="72"
+                Margin="6 0"/>
+            <Button
+                Click="Button_Click_2" 
+                Content="EN"
+                Height="24" Width="72"
+                Margin="6 0"/>
+        </StackPanel>
+        <TextBlock
+            Text="Roll your own"
+            Margin="6 6 6 0"
+            FontWeight="Bold"
+            Grid.Row="7" Grid.Column="0" />
+        <Grid
+            Margin="6"
+            Grid.Row="8" Grid.Column="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="auto" />
+            </Grid.ColumnDefinitions>
+            <TextBox
+                x:Name="YourHtml" 
+                Text="(Type your HTML here, and press the arrow button.)"
+                TextWrapping="Wrap" 
+                Grid.Column="0"/>
+            <Button
+                Click="Button_Click_3"
+                Height="24"
+                Margin="6 0 0 0 "
+                Grid.Column="1" >
+                <Image Source="/U2UConsult.HtmlTextBlock.Sample;component/Assets/Images/arrow_right.png" />
+            </Button>
+        </Grid>
+        <uc:RichTextBox
+            x:Name="DiyRichTextBox"
+            Style="{StaticResource HtmlTextBlockStyle}"
+            TextFormatter="{StaticResource HtmlFormatter}"
+            Margin="0 6 6 6"
+            Grid.Row="8" Grid.Column="1" >
+        </uc:RichTextBox>
+        <StackPanel
+            Orientation="Horizontal"
+            HorizontalAlignment="Right"
+            VerticalAlignment="Bottom"
+            Margin="6"
+            Grid.Row="9" Grid.Column="1">
+            <TextBlock
+                Text="This is a " 
+                FontWeight="Bold"
+                VerticalAlignment="Bottom"/>
+            <Image 
+                Source="/U2UConsult.HtmlTextBlock.Sample;component/Assets/Images/U2UC.jpg" 
+                Height="24"/>
+            <TextBlock
+                Text=" product." 
+                FontWeight="Bold"
+                VerticalAlignment="Bottom"/>
+        </StackPanel>
+    </Grid>
+</Window>
